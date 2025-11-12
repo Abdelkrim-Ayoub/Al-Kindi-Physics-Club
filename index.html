@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkindi Physics Club - Application Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="background"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Cover Page -->
+        <div class="page active" id="page-0">
+            <div class="cover-content">
+                <div class="logo-wrapper">
+                    <img src="Layer_1.png" alt="Alkindi Physics Club" class="cover-logo">
+                </div>
+                <h1 class="cover-title">Alkindi Physics Club</h1>
+                <p class="cover-subtitle">Application & Membership Form</p>
+                <p class="cover-description">Join the universe of scientific exploration</p>
+                <button class="btn btn-primary" onclick="goToPage(1)">Begin Your Journey →</button>
+            </div>
+        </div>
+
+        <form id="application-form">
+
+        <!-- Page 1: Personal Information -->
+        <div class="page" id="page-1">
+            <div class="page-header">
+                <h2>Personal Information</h2>
+            </div>
+            <div class="page-content">
+                <div class="form-group">
+                    <label for="fullName">Full name *</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="major">Major (année et spécialité) *</label>
+                    <input type="text" id="major" name="major" required placeholder="e.g., 3ème année Génie Informatique">
+                </div>
+
+                <div class="form-group">
+                    <label for="matricule">Matricule *</label>
+                    <input type="text" id="matricule" name="matricule" required placeholder="Enter your student ID">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="facebook">Facebook</label>
+                    <input type="text" id="facebook" name="facebook" placeholder="Enter your Facebook profile">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToPage(0)">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="validatePage1()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Club Information -->
+        <div class="page" id="page-2">
+            <div class="page-header">
+                <h2>Club Information</h2>
+            </div>
+            <div class="page-content">
+                <div class="form-group">
+                    <label for="clubKnowledge">What do you know about our club *</label>
+                    <textarea id="clubKnowledge" name="clubKnowledge" rows="4" required placeholder="Tell us what you know about Al-Kindi Physics Club..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Are you part of any other club *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="otherClub" value="yes" required onchange="toggleOtherClubDetails()">
+                            Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="otherClub" value="no" required onchange="toggleOtherClubDetails()">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="otherClubDetailsGroup" style="display: none;">
+                    <label for="otherClubName">If yes, which one</label>
+                    <input type="text" id="otherClubName" name="otherClubName" placeholder="Enter the name of the club">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToPage(1)">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="validatePage2()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Experience & Skills -->
+        <div class="page" id="page-3">
+            <div class="page-header">
+                <h2>Experience & Skills</h2>
+            </div>
+            <div class="page-content">
+                <div class="form-group">
+                    <label>Did you participate / organise an event before *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="eventExperience" value="yes" required onchange="toggleEventDetails()">
+                            Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="eventExperience" value="no" required onchange="toggleEventDetails()">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="eventDetailsGroup" style="display: none;">
+                    <label for="eventDescription">If yes, what was the event about</label>
+                    <textarea id="eventDescription" name="eventDescription" rows="3" placeholder="Describe the event you participated in or organized..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Mention any skills that you possess that might be beneficial to the club *</label>
+                    <textarea id="skills" name="skills" rows="4" required placeholder="List your skills (e.g., programming, design, event planning, etc.)..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToPage(2)">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="validatePage3()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 4: Physics Passion -->
+        <div class="page" id="page-4">
+            <div class="page-header">
+                <h2>Physics Passion</h2>
+            </div>
+            <div class="page-content">
+                <div class="form-group">
+                    <label for="physicsPassion">Are you passionate about physics *</label>
+                    <textarea id="physicsPassion" name="physicsPassion" rows="4" required placeholder="Tell us about your passion for physics..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="favoriteTheory">What's that one theory, experiment, idea or paradox that fascinates you the most in physics *</label>
+                    <textarea id="favoriteTheory" name="favoriteTheory" rows="4" required placeholder="Share the theory, experiment, idea or paradox that fascinates you..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="joinReason">Why do you want to join Al-Kindi Physics Club *</label>
+                    <textarea id="joinReason" name="joinReason" rows="4" required placeholder="Share your motivation for joining..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToPage(3)">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="goToPage(5)">Review →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5: Review & Submit -->
+        <div class="page" id="page-5">
+            <div class="page-header">
+                <h2>Review Your Application</h2>
+            </div>
+            <div class="page-content">
+                <div class="review-section">
+                    <h3>Application Summary</h3>
+                    <div id="reviewContent" class="review-content">
+                        <!-- Will be filled by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreement" required> 
+                        I certify that the information provided is accurate and complete
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToPage(4)">← Back</button>
+                    <button type="button" class="btn btn-success" onclick="submitApplication()">✓ Submit Application</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Application Submitted Successfully!</h2>
+            <p>Thank you for applying to Alkindi Physics Club.</p>
+            <p>We will review your application and contact you soon.</p>
+            <button class="btn btn-primary" onclick="resetForm()">Submit Another Application</button>
+        </div>
+    </div>
+
+    <!-- Page Indicators -->
+    <div class="page-indicators">
+        <span class="dot active" onclick="goToPage(0)" title="Cover"></span>
+        <span class="dot" onclick="goToPage(1)" title="Personal Info"></span>
+        <span class="dot" onclick="goToPage(2)" title="Club Info"></span>
+        <span class="dot" onclick="goToPage(3)" title="Experience"></span>
+        <span class="dot" onclick="goToPage(4)" title="Physics Passion"></span>
+        <span class="dot" onclick="goToPage(5)" title="Review"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
